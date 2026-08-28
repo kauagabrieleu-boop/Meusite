@@ -1,122 +1,134 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Minha Loja</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .carrinho {
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .produto h2 {
+      margin-top: 0;
+    }
+
+    .preco {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    button {
+      background: #111;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+
 </head>
 
 <body>
 
-<header>
-  <h1>🚀 Minha Loja</h1>
+  <header>
+    <h1>MINHA LOJA</h1>
 
-  <button onclick="abrirCarrinho()">
-    🛒 Carrinho (<span id="quantidade">0</span>)
-  </button>
-</header>
+```
+<div class="carrinho">
+  🛒 Carrinho (<span id="quantidade">0</span>)
+</div>
+```
 
-<main>
+  </header>
 
-  <section class="hero">
-    <h2>Bem-vindo à minha loja</h2>
-    <p>Encontre produtos digitais incríveis.</p>
-  </section>
+  <div class="container">
 
-  <section>
-    <h2>Produtos</h2>
+```
+<h2>Bem-vindo à minha loja!</h2>
 
-    <div id="produtos" class="produtos"></div>
-  </section>
+<h2>Produtos</h2>
 
-</main>
-<section id="detalhes-produto" class="detalhes">
-  <h2>📦 Kit Criador — 1000 Ideias</h2>
+<div class="produto">
+  <h2>Kit Criador — 1000 Ideias</h2>
 
   <p>
-    Um pacote completo para quem quer criar conteúdo para
-    TikTok, Reels e Shorts.
+    Um kit com 1000 ideias para quem quer criar conteúdos,
+    projetos e novos negócios.
   </p>
 
-  <h3>Você recebe:</h3>
+  <div class="preco">R$ 9,90</div>
 
-  <ul>
-    <li>🎬 1000 ideias de vídeos</li>
-    <li>✍️ 100 roteiros</li>
-    <li>🤖 100 prompts para IA</li>
-    <li>🎮 Ideias para conteúdo gamer</li>
-    <li>😂 Ideias de entretenimento</li>
-    <li>📚 Ideias educativas</li>
-    <li>💼 Ideias para negócios</li>
-    <li>📈 Checklist para criadores</li>
-  </ul>
-
-  <div class="preco">
-    R$ 9,90
-  </div>
-
-  <button class="comprar" onclick="adicionar(1)">
-    🚀 Quero o Kit Criador
+  <button onclick="adicionarCarrinho()">
+    Adicionar ao carrinho
   </button>
-</section>
-<!-- CARRINHO -->
-<div id="carrinho" class="modal">
-  <div class="modal-conteudo">
 
-    <button class="fechar" onclick="fecharCarrinho()">✕</button>
-
-    <h2>🛒 Seu carrinho</h2>
-
-    <div id="itensCarrinho"></div>
-
-    <h3>Total: R$ <span id="total">0,00</span></h3>
-
-    <button class="comprar" onclick="finalizarCompra()">
-      💳 Finalizar compra
-    </button>
-
-  </div>
+  <div id="mensagem"></div>
 </div>
-
-<!-- CHECKOUT -->
-<div id="checkout" class="modal">
-
-  <div class="modal-conteudo">
-
-    <button class="fechar" onclick="fecharCheckout()">✕</button>
-
-    <h2>💳 Checkout</h2>
-
-    <form onsubmit="processarPedido(event)">
-
-      <input
-        id="nome"
-        type="text"
-        placeholder="Seu nome"
-        required
-      >
-
-      <input
-        id="email"
-        type="email"
-        placeholder="Seu e-mail"
-        required
-      >
-
-      <button class="comprar" type="submit">
-        Continuar para pagamento
-      </button>
-
-    </form>
-
-    <p id="mensagem"></p>
+```
 
   </div>
 
-</div>
+  <script>
+    let quantidade = 0;
 
-<script src="script.js"></script>
+    function adicionarCarrinho() {
+      quantidade++;
+
+      document.getElementById("quantidade").textContent = quantidade;
+
+      document.getElementById("mensagem").textContent =
+        "✅ Produto adicionado ao carrinho!";
+    }
+  </script>
 
 </body>
 </html>
