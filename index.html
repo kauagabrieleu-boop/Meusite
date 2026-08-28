@@ -29,6 +29,7 @@
 
     .carrinho {
       font-size: 18px;
+      cursor: pointer;
     }
 
     .container {
@@ -43,10 +44,6 @@
       padding: 25px;
       margin-top: 25px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-
-    .produto h2 {
-      margin-top: 0;
     }
 
     .preco {
@@ -65,13 +62,34 @@
       font-size: 16px;
     }
 
-    button:hover {
-      opacity: 0.8;
-    }
-
     #mensagem {
       margin-top: 15px;
       font-weight: bold;
+    }
+
+    #carrinhoBox {
+      display: none;
+      background: white;
+      max-width: 500px;
+      margin: 25px auto;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    #carrinhoBox h2 {
+      margin-top: 0;
+    }
+
+    .total {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .fechar {
+      background: #777;
+      margin-left: 10px;
     }
   </style>
 
@@ -83,7 +101,7 @@
     <h1>MINHA LOJA</h1>
 
 ```
-<div class="carrinho">
+<div class="carrinho" onclick="abrirCarrinho()">
   🛒 Carrinho (<span id="quantidade">0</span>)
 </div>
 ```
@@ -113,12 +131,34 @@
 
   <div id="mensagem"></div>
 </div>
+
+<div id="carrinhoBox">
+  <h2>🛒 Seu carrinho</h2>
+
+  <p>Kit Criador — 1000 Ideias</p>
+  <p>Quantidade: <span id="quantidadeCarrinho">0</span></p>
+
+  <div class="total">
+    Total: R$ <span id="total">0,00</span>
+  </div>
+
+  <button onclick="comprar()">
+    Quero comprar
+  </button>
+
+  <button class="fechar" onclick="fecharCarrinho()">
+    Fechar
+  </button>
+
+  <p id="pagamento"></p>
+</div>
 ```
 
   </div>
 
   <script>
     let quantidade = 0;
+    const preco = 9.90;
 
     function adicionarCarrinho() {
       quantidade++;
@@ -127,6 +167,31 @@
 
       document.getElementById("mensagem").textContent =
         "✅ Produto adicionado ao carrinho!";
+    }
+
+    function abrirCarrinho() {
+      document.getElementById("carrinhoBox").style.display = "block";
+
+      document.getElementById("quantidadeCarrinho").textContent = quantidade;
+
+      const total = quantidade * preco;
+
+      document.getElementById("total").textContent =
+        total.toFixed(2).replace(".", ",");
+    }
+
+    function fecharCarrinho() {
+      document.getElementById("carrinhoBox").style.display = "none";
+    }
+
+    function comprar() {
+      if (quantidade === 0) {
+        alert("Adicione o produto ao carrinho primeiro!");
+        return;
+      }
+
+      document.getElementById("pagamento").textContent =
+        "O pagamento será configurado no próximo passo.";
     }
   </script>
 
