@@ -4,92 +4,235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Loja</title>
+  <title>Minha Loja | Kit Criador</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f4f6f8;
       color: #222;
     }
 
     header {
       background: #111;
       color: white;
-      padding: 20px;
+      padding: 18px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header h1 {
       margin: 0;
+      font-size: 22px;
     }
 
-    .carrinho {
-      font-size: 18px;
+    .carrinho-btn {
+      background: white;
+      color: #111;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: white;
+    }
+
+    .hero h2 {
+      font-size: 38px;
+      margin: 0 0 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #666;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 35px 20px;
+    }
+
+    .titulo {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
     .produto {
       background: white;
-      border-radius: 15px;
-      padding: 25px;
-      margin-top: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      max-width: 650px;
+      margin: auto;
+      text-align: center;
     }
 
-    .preco {
-      font-size: 25px;
-      font-weight: bold;
+    .produto-icon {
+      font-size: 60px;
+    }
+
+    .produto h3 {
+      font-size: 27px;
       margin: 15px 0;
     }
 
-    button {
+    .produto p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .preco {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+
+    .botao {
       background: #111;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 17px;
       cursor: pointer;
-      font-size: 16px;
-    }
-
-    #mensagem {
-      margin-top: 15px;
       font-weight: bold;
     }
 
-    #carrinhoBox {
-      display: none;
-      background: white;
-      max-width: 500px;
-      margin: 25px auto;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    .botao:hover {
+      opacity: 0.85;
     }
 
-    #carrinhoBox h2 {
+    .beneficios {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .beneficio {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .beneficio strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .carrinho-box {
+      display: none;
+      position: fixed;
+      right: 15px;
+      top: 80px;
+      width: 350px;
+      max-width: calc(100% - 30px);
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      z-index: 20;
+    }
+
+    .carrinho-box h2 {
       margin-top: 0;
     }
 
+    .item {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .quantidade {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .quantidade button {
+      width: 35px;
+      height: 35px;
+      border: none;
+      border-radius: 8px;
+      background: #eee;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
     .total {
-      font-size: 22px;
+      font-size: 23px;
       font-weight: bold;
       margin: 20px 0;
     }
 
     .fechar {
       background: #777;
-      margin-left: 10px;
+      margin-left: 5px;
+    }
+
+    .pagamento {
+      display: none;
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      max-width: 650px;
+      margin: 30px auto;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .aviso {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 20px 0;
+      color: #664d03;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #111;
+      color: white;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 700px) {
+      .hero h2 {
+        font-size: 29px;
+      }
+
+      .beneficios {
+        grid-template-columns: 1fr;
+      }
+
+      .carrinho-box {
+        left: 15px;
+        right: 15px;
+        width: auto;
+      }
     }
   </style>
 
@@ -97,103 +240,232 @@
 
 <body>
 
-  <header>
-    <h1>MINHA LOJA</h1>
+<header>
+  <h1>MINHA LOJA</h1>
 
-```
-<div class="carrinho" onclick="abrirCarrinho()">
-  🛒 Carrinho (<span id="quantidade">0</span>)
-</div>
-```
+  <button class="carrinho-btn" onclick="abrirCarrinho()">
+    🛒 Carrinho (<span id="quantidadeTopo">0</span>)
+  </button>
+</header>
 
-  </header>
-
-  <div class="container">
-
-```
-<h2>Bem-vindo à minha loja!</h2>
-
-<h2>Produtos</h2>
-
-<div class="produto">
-  <h2>Kit Criador — 1000 Ideias</h2>
+<section class="hero">
+  <h2>Bem-vindo à minha loja!</h2>
 
   <p>
-    Um kit com 1000 ideias para quem quer criar conteúdos,
-    projetos e novos negócios.
+    Encontre materiais digitais para ajudar você a ter novas ideias,
+    criar projetos e desenvolver sua criatividade.
   </p>
+</section>
 
-  <div class="preco">R$ 9,90</div>
+<main class="container">
 
-  <button onclick="adicionarCarrinho()">
-    Adicionar ao carrinho
-  </button>
+  <h2 class="titulo">📦 Produto em destaque</h2>
 
-  <div id="mensagem"></div>
+  <div class="produto">
+
+```
+<div class="produto-icon">💡</div>
+
+<h3>Kit Criador — 1000 Ideias</h3>
+
+<p>
+  Um material digital com 1000 ideias para inspirar
+  conteúdos, projetos e novos negócios.
+</p>
+
+<div class="preco">R$ 9,90</div>
+
+<button class="botao" onclick="adicionar()">
+  🛒 Adicionar ao carrinho
+</button>
+
+<p id="mensagem"></p>
+```
+
+  </div>
+
+  <div class="beneficios">
+
+```
+<div class="beneficio">
+  <strong>💡 1000 ideias</strong>
+  Material pensado para gerar inspiração.
 </div>
 
-<div id="carrinhoBox">
+<div class="beneficio">
+  <strong>📱 Digital</strong>
+  Produto entregue em formato digital.
+</div>
+
+<div class="beneficio">
+  <strong>🚀 Prático</strong>
+  Fácil de acessar e utilizar.
+</div>
+```
+
+  </div>
+
+  <section id="pagamento" class="pagamento">
+
+```
+<h2>💳 Finalizar compra</h2>
+
+<p>
+  Você está comprando:
+</p>
+
+<strong>Kit Criador — 1000 Ideias</strong>
+
+<div class="total">
+  Total: R$ <span id="totalPagamento">0,00</span>
+</div>
+
+<div class="aviso">
+  O pagamento ainda precisa ser conectado a um serviço
+  de pagamento seguro. Não coloque sua chave Pix diretamente
+  neste código público.
+</div>
+
+<button class="botao" onclick="voltarCarrinho()">
+  Voltar ao carrinho
+</button>
+```
+
+  </section>
+
+</main>
+
+<div id="carrinhoBox" class="carrinho-box">
+
   <h2>🛒 Seu carrinho</h2>
 
-  <p>Kit Criador — 1000 Ideias</p>
-  <p>Quantidade: <span id="quantidadeCarrinho">0</span></p>
+  <div class="item">
+
+```
+<strong>Kit Criador — 1000 Ideias</strong>
+
+<p>R$ 9,90</p>
+
+<div class="quantidade">
+
+  <button onclick="diminuir()">−</button>
+
+  <span id="quantidadeCarrinho">0</span>
+
+  <button onclick="adicionar()">+</button>
+
+</div>
+```
+
+  </div>
 
   <div class="total">
     Total: R$ <span id="total">0,00</span>
   </div>
 
-  <button onclick="comprar()">
-    Quero comprar
+  <button class="botao" onclick="finalizar()">
+    💳 Continuar para pagamento
   </button>
 
-  <button class="fechar" onclick="fecharCarrinho()">
+  <button class="botao fechar" onclick="fecharCarrinho()">
     Fechar
   </button>
 
-  <p id="pagamento"></p>
 </div>
-```
 
-  </div>
+<footer>
+  <p>© 2026 Minha Loja</p>
+  <p>Produto digital</p>
+</footer>
 
-  <script>
-    let quantidade = 0;
-    const preco = 9.90;
+<script>
 
-    function adicionarCarrinho() {
-      quantidade++;
+  let quantidade = 0;
 
-      document.getElementById("quantidade").textContent = quantidade;
+  const preco = 9.90;
 
-      document.getElementById("mensagem").textContent =
-        "✅ Produto adicionado ao carrinho!";
+  function atualizar() {
+
+    document.getElementById("quantidadeTopo").textContent = quantidade;
+
+    document.getElementById("quantidadeCarrinho").textContent = quantidade;
+
+    const total = quantidade * preco;
+
+    document.getElementById("total").textContent =
+      total.toFixed(2).replace(".", ",");
+
+    document.getElementById("totalPagamento").textContent =
+      total.toFixed(2).replace(".", ",");
+
+  }
+
+  function adicionar() {
+
+    quantidade++;
+
+    atualizar();
+
+    document.getElementById("mensagem").textContent =
+      "✅ Produto adicionado ao carrinho!";
+
+  }
+
+  function diminuir() {
+
+    if (quantidade > 0) {
+      quantidade--;
     }
 
-    function abrirCarrinho() {
-      document.getElementById("carrinhoBox").style.display = "block";
+    atualizar();
 
-      document.getElementById("quantidadeCarrinho").textContent = quantidade;
+  }
 
-      const total = quantidade * preco;
+  function abrirCarrinho() {
 
-      document.getElementById("total").textContent =
-        total.toFixed(2).replace(".", ",");
+    document.getElementById("carrinhoBox").style.display = "block";
+
+    atualizar();
+
+  }
+
+  function fecharCarrinho() {
+
+    document.getElementById("carrinhoBox").style.display = "none";
+
+  }
+
+  function finalizar() {
+
+    if (quantidade === 0) {
+
+      alert("Seu carrinho está vazio!");
+
+      return;
+
     }
 
-    function fecharCarrinho() {
-      document.getElementById("carrinhoBox").style.display = "none";
-    }
+    fecharCarrinho();
 
-    function comprar() {
-      if (quantidade === 0) {
-        alert("Adicione o produto ao carrinho primeiro!");
-        return;
-      }
+    document.getElementById("pagamento").style.display = "block";
 
-      document.getElementById("pagamento").textContent =
-        "O pagamento será configurado no próximo passo.";
-    }
-  </script>
+    document.getElementById("pagamento").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+  function voltarCarrinho() {
+
+    document.getElementById("pagamento").style.display = "none";
+
+    abrirCarrinho();
+
+  }
+
+  atualizar();
+
+</script>
 
 </body>
 </html>
