@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Loja</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>🚀 Minha Loja</h1>
+
+  <button onclick="abrirCarrinho()">
+    🛒 Carrinho (<span id="quantidade">0</span>)
+  </button>
+</header>
+
+<main>
+
+  <section class="hero">
+    <h2>Bem-vindo à minha loja</h2>
+    <p>Encontre produtos digitais incríveis.</p>
+  </section>
+
+  <section>
+    <h2>Produtos</h2>
+
+    <div id="produtos" class="produtos"></div>
+  </section>
+
+</main>
+<section id="detalhes-produto" class="detalhes">
+  <h2>📦 Kit Criador — 1000 Ideias</h2>
+
+  <p>
+    Um pacote completo para quem quer criar conteúdo para
+    TikTok, Reels e Shorts.
+  </p>
+
+  <h3>Você recebe:</h3>
+
+  <ul>
+    <li>🎬 1000 ideias de vídeos</li>
+    <li>✍️ 100 roteiros</li>
+    <li>🤖 100 prompts para IA</li>
+    <li>🎮 Ideias para conteúdo gamer</li>
+    <li>😂 Ideias de entretenimento</li>
+    <li>📚 Ideias educativas</li>
+    <li>💼 Ideias para negócios</li>
+    <li>📈 Checklist para criadores</li>
+  </ul>
+
+  <div class="preco">
+    R$ 9,90
+  </div>
+
+  <button class="comprar" onclick="adicionar(1)">
+    🚀 Quero o Kit Criador
+  </button>
+</section>
+<!-- CARRINHO -->
+<div id="carrinho" class="modal">
+  <div class="modal-conteudo">
+
+    <button class="fechar" onclick="fecharCarrinho()">✕</button>
+
+    <h2>🛒 Seu carrinho</h2>
+
+    <div id="itensCarrinho"></div>
+
+    <h3>Total: R$ <span id="total">0,00</span></h3>
+
+    <button class="comprar" onclick="finalizarCompra()">
+      💳 Finalizar compra
+    </button>
+
+  </div>
+</div>
+
+<!-- CHECKOUT -->
+<div id="checkout" class="modal">
+
+  <div class="modal-conteudo">
+
+    <button class="fechar" onclick="fecharCheckout()">✕</button>
+
+    <h2>💳 Checkout</h2>
+
+    <form onsubmit="processarPedido(event)">
+
+      <input
+        id="nome"
+        type="text"
+        placeholder="Seu nome"
+        required
+      >
+
+      <input
+        id="email"
+        type="email"
+        placeholder="Seu e-mail"
+        required
+      >
+
+      <button class="comprar" type="submit">
+        Continuar para pagamento
+      </button>
+
+    </form>
+
+    <p id="mensagem"></p>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+      </html>
