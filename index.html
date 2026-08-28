@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
       background: #111;
       color: white;
       text-align: center;
-      padding: 30px 15px;
+      padding: 35px 20px;
     }
 
     header h1 {
@@ -33,19 +34,24 @@
 
     header p {
       color: #ccc;
+      font-size: 16px;
     }
 
     .container {
+      width: 90%;
       max-width: 700px;
-      margin: 40px auto;
-      padding: 20px;
+      margin: 35px auto;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     }
 
     .produto {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
       text-align: center;
     }
 
@@ -55,44 +61,48 @@
     }
 
     .produto p {
-      font-size: 17px;
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .preco {
-      font-size: 35px;
+      font-size: 38px;
       font-weight: bold;
-      margin: 20px 0;
+      margin: 25px 0;
     }
 
     button {
-      background: #00a859;
-      color: white;
+      width: 100%;
       border: none;
-      padding: 16px 25px;
       border-radius: 10px;
-      font-size: 18px;
+      padding: 16px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      width: 100%;
+      margin-top: 10px;
     }
 
-    button:hover {
+    .btn-comprar {
+      background: #00a859;
+      color: white;
+    }
+
+    .btn-comprar:hover {
       background: #008f4c;
+    }
+
+    .btn-copiar {
+      background: #111;
+      color: white;
+    }
+
+    .btn-confirmar {
+      background: #1877f2;
+      color: white;
     }
 
     #pagamento {
       display: none;
-      margin-top: 30px;
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-
-    #pagamento h2 {
-      margin-bottom: 15px;
     }
 
     .pix {
@@ -102,26 +112,53 @@
       word-break: break-all;
       font-size: 14px;
       margin: 15px 0;
+      border: 1px solid #ddd;
     }
 
-    .copiar {
-      background: #111;
-    }
-
-    .copiar:hover {
-      background: #333;
+    .passos {
+      text-align: left;
+      line-height: 1.8;
+      margin-top: 15px;
+      padding-left: 20px;
     }
 
     .aviso {
-      margin-top: 15px;
+      background: #fff4cc;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
       font-size: 14px;
-      color: #666;
+      line-height: 1.5;
+    }
+
+    #confirmacao {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background: #e8f8ef;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .conteudo-kit {
+      text-align: left;
+    }
+
+    .conteudo-kit h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .conteudo-kit ul {
+      padding-left: 25px;
+      line-height: 1.8;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 30px 15px;
       color: #777;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -130,103 +167,182 @@
 
   <header>
     <h1>🚀 Kit Criador 1000 Ideias</h1>
-    <p>Tenha acesso ao conteúdo e comece a criar.</p>
+    <p>Mil ideias para ajudar você a criar projetos e conteúdos.</p>
   </header>
 
-  <div class="container">
+  <main class="container">
 
-    <div class="produto">
+    <!-- PRODUTO -->
+    <section class="card produto">
 
-      <h2>Kit Criador 1000 Ideias</h2>
+      <h2>📦 Kit Criador 1000 Ideias</h2>
 
       <p>
-        Um kit com centenas de ideias para ajudar você
-        a criar conteúdos, projetos e novas oportunidades.
+        Um kit digital com 1.000 ideias organizadas em diferentes
+        categorias para ajudar criadores a desenvolver novos projetos,
+        conteúdos e produtos.
       </p>
 
       <div class="preco">
         R$ 9,90
       </div>
 
-      <button onclick="mostrarPagamento()">
-        QUERO O KIT CRIADOR
+      <button
+        class="btn-comprar"
+        onclick="mostrarPagamento()">
+        🛒 QUERO O KIT CRIADOR
       </button>
 
-    </div>
+    </section>
 
-    <div id="pagamento">
 
-      <h2>💚 Pagamento via Pix</h2>
+    <!-- CONTEÚDO -->
+    <section class="card conteudo-kit">
 
-      <p>
-        Clique no botão abaixo para copiar o código Pix.
+      <h2>✨ O que você recebe?</h2>
+
+      <ul>
+        <li>📱 50 ideias para redes sociais</li>
+        <li>🎥 50 ideias para vídeos</li>
+        <li>💰 50 ideias para pequenos negócios</li>
+        <li>🚀 50 ideias de empreendedorismo</li>
+        <li>📚 50 ideias para estudos</li>
+        <li>⏱️ 50 ideias de produtividade</li>
+        <li>🎨 50 ideias de design</li>
+        <li>📣 50 ideias de marketing</li>
+        <li>💻 50 ideias de tecnologia</li>
+        <li>🗂️ 50 ideias de organização</li>
+        <li>📖 50 ideias para e-books</li>
+        <li>🧩 50 ideias de templates</li>
+        <li>📸 50 ideias de fotografia</li>
+        <li>🎮 50 ideias para games</li>
+        <li>🤝 50 ideias para comunidades</li>
+        <li>🏆 50 ideias para portfólio</li>
+        <li>🛠️ 50 ideias de serviços digitais</li>
+        <li>🧠 50 ideias de criatividade</li>
+        <li>📅 50 ideias de planejamento</li>
+        <li>💡 50 ideias extras para criadores</li>
+      </ul>
+
+      <p style="margin-top:20px;">
+        <strong>Total: 1.000 ideias.</strong>
+      </p>
+
+    </section>
+
+
+    <!-- PAGAMENTO -->
+    <section id="pagamento" class="card">
+
+      <h2>💳 Pagamento via Pix</h2>
+
+      <p style="margin-top:10px;">
+        Copie o código abaixo e cole no aplicativo do seu banco.
       </p>
 
       <div class="pix" id="codigoPix">
 00020126330014BR.GOV.BCB.PIX01111541938992452040000530398654049.905802BR5925Kaua Gabriel da Silva Lop6009SAO PAULO62140510rVPy6bnsra6304F22B
       </div>
 
-      <button class="copiar" onclick="copiarPix()">
-        📋 COPIAR PIX<button onclick="mostrarEntrega()" style="margin-top:10px;">
-  ✅ JÁ FIZ O PAGAMENTO
-</button>
-
-<div id="entrega" style="display:none; margin-top:20px;">
-  <h3>Pagamento enviado!</h3>
-  <p>
-    O pagamento será conferido. Após a confirmação,
-    o Kit Criador será enviado.
-  </p>
-</div>
-
-<script>
-function mostrarEntrega() {
-  document.getElementById("entrega").style.display = "block";
-}
-</script>
+      <button
+        class="btn-copiar"
+        onclick="copiarPix()">
+        📋 COPIAR PIX
       </button>
 
-      <p class="aviso" id="mensagem">
-        Depois de pagar, aguarde a confirmação do pagamento.
-      </p>
+      <ol class="passos">
+        <li>Copie o código Pix.</li>
+        <li>Abra seu banco.</li>
+        <li>Escolha Pix Copia e Cola.</li>
+        <li>Cole o código.</li>
+        <li>Confira o valor e o recebedor.</li>
+        <li>Faça o pagamento.</li>
+      </ol>
 
-    </div>
+      <div class="aviso">
+        ⚠️ Depois do pagamento, o pagamento precisa ser
+        confirmado antes da entrega do produto.
+      </div>
 
-  </div>
+      <button
+        class="btn-confirmar"
+        onclick="mostrarConfirmacao()">
+        ✅ JÁ FIZ O PAGAMENTO
+      </button>
+
+      <div id="confirmacao">
+
+        <h3>✅ Obrigado!</h3>
+
+        <p style="margin-top:10px;">
+          Seu pagamento será conferido.
+          Depois da confirmação, o Kit Criador será enviado.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
 
   <footer>
     © 2026 Kit Criador 1000 Ideias
   </footer>
 
+
   <script>
 
     function mostrarPagamento() {
-      document.getElementById("pagamento").style.display = "block";
 
-      document.getElementById("pagamento").scrollIntoView({
+      const pagamento =
+        document.getElementById("pagamento");
+
+      pagamento.style.display = "block";
+
+      pagamento.scrollIntoView({
         behavior: "smooth"
       });
     }
 
+
     function copiarPix() {
 
-      const codigo = document.getElementById("codigoPix").innerText.trim();
+      const codigo =
+        document.getElementById("codigoPix")
+        .innerText
+        .trim();
 
-      navigator.clipboard.writeText(codigo).then(function() {
+      navigator.clipboard.writeText(codigo)
+        .then(function() {
 
-        document.getElementById("mensagem").innerText =
-          "✅ Pix copiado! Agora abra seu banco e cole o código para pagar.";
+          alert("✅ Pix copiado!");
 
-      }).catch(function() {
+        })
+        .catch(function() {
 
-        document.getElementById("mensagem").innerText =
-          "Copie o código Pix manualmente acima.";
+          alert(
+            "Não foi possível copiar automaticamente. " +
+            "Selecione e copie o código manualmente."
+          );
 
-      });
+        });
+    }
 
+
+    function mostrarConfirmacao() {
+
+      document.getElementById("confirmacao")
+        .style.display = "block";
+
+      document.getElementById("confirmacao")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
     }
 
   </script>
 
 </body>
+
 </html>
