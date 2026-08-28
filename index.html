@@ -167,7 +167,23 @@
       </div>
 
       <button class="copiar" onclick="copiarPix()">
-        📋 COPIAR PIX
+        📋 COPIAR PIX<button onclick="mostrarEntrega()" style="margin-top:10px;">
+  ✅ JÁ FIZ O PAGAMENTO
+</button>
+
+<div id="entrega" style="display:none; margin-top:20px;">
+  <h3>Pagamento enviado!</h3>
+  <p>
+    O pagamento será conferido. Após a confirmação,
+    o Kit Criador será enviado.
+  </p>
+</div>
+
+<script>
+function mostrarEntrega() {
+  document.getElementById("entrega").style.display = "block";
+}
+</script>
       </button>
 
       <p class="aviso" id="mensagem">
